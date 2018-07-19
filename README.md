@@ -4,4 +4,10 @@
 > `cd react-complete-guide`  
 > `npm start`  
 
-## more
+## visual studio code (editor plugin)
+https://marketplace.visualstudio.com/items?itemName=PKief.material-icon-theme  
+
+## more  
+
+
+
