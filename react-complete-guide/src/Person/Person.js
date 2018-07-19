@@ -11,7 +11,7 @@ const person = (props) => {
     // dynamic content
     return (
         <div>
-            <p>I'm {name} and I am {age} years old!!</p>
+            <p>I am {name} and I am {age} years old</p>
             <p>{props.children}</p>
         </div>
     )
