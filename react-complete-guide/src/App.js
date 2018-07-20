@@ -23,7 +23,8 @@ class App extends Component {
         { name: 'Guida!!', age:'42!!' },
         { name: 'Hugo!!', age:'1!!' }
       ],
-      otherState: 'some other state'
+      otherState: 'some other state',
+      showPersons: false
     })
   }
 
@@ -36,6 +37,11 @@ class App extends Component {
       ],
       otherState: 'some other state'
     })
+  }
+
+  togglePersonsHandler = () => {
+    const doesShow = this.state.showPersons
+    this.setState({ showPersons: !doesShow })
   }
 
   render() {
@@ -55,31 +61,40 @@ class App extends Component {
       }
     }
 
+    let persons = null
+    if (this.state.showPersons) {
+      persons = (
+        <div>
+          <Person 
+            name={this.state.persons[0].name} 
+            age={this.state.persons[0].age}/>
+          <Person 
+            name={this.state.persons[1].name} 
+            age={this.state.persons[1].age}/>
+          <Person 
+            name={this.state.persons[2].name} 
+            age={this.state.persons[2].age}
+            style={styles.paragraph}
+            click={this.switchNameHandler.bind(this, 'AMERICO!!@@')}
+            changed={this.nameChangeHandler}
+          >
+              Our Wonderful Baby with an onClick event
+          </Person>
+        </div>
+      )
+    }
+
     return (
       <div className="App">
         <h1>I AM A REACT APP!!</h1>
         <h3>This is really working!!</h3>
         <button 
-          onClick={() => this.switchNameHandler('AMERICO!!££')}
+          onClick={this.togglePersonsHandler}
           style={styles.button}
-          >
-            Switch Name
-          </button>
-        <Person 
-          name={this.state.persons[0].name} 
-          age={this.state.persons[0].age}/>
-        <Person 
-          name={this.state.persons[1].name} 
-          age={this.state.persons[1].age}/>
-        <Person 
-          name={this.state.persons[2].name} 
-          age={this.state.persons[2].age}
-          style={styles.paragraph}
-          click={this.switchNameHandler.bind(this, 'AMERICO!!@@')}
-          changed={this.nameChangeHandler}
         >
-            Our Wonderful Baby with an onClick event
-        </Person>
+            Switch Name
+        </button>   
+        {persons} 
       </div>
     );
     // return React.createElement('div', {className: 'App'}, React.createElement('h1', null, 'I\'M A REACT APP!!'))
