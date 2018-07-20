@@ -68,7 +68,8 @@ class App extends Component {
 
     const styles = {
       button: {
-        backgroundColor: 'white',
+        backgroundColor: 'green',
+        color: 'white',
         font: 'inherit',
         border: '1px solid blue',
         padding: '8px',
@@ -84,24 +85,39 @@ class App extends Component {
     if (this.state.showPersons) {
       persons = (
         <div>
-          {this.state.persons.map((person, index) => {
-            return <Person 
-              key={person.id}
-              style={styles.paragraph}
-              name={person.name} 
-              age={person.age}
-              click={() => this.deletePersonHandler(index)}
-              changed={(event) => this.nameChangedHandler(event, person.id)}
-            />
-          })}
+          {
+            this.state.persons.map((person, index) => {
+              return <Person 
+                key={person.id}
+                style={styles.paragraph}
+                name={person.name} 
+                age={person.age}
+                click={() => this.deletePersonHandler(index)}
+                changed={(event) => this.nameChangedHandler(event, person.id)}
+              />
+            })
+          }
         </div>
       )
+
+      // dynamic style for button
+      styles.button.backgroundColor = 'red'
+    }
+
+    // dynamic style from stylesheet
+    // let classes = ['red', 'bold'].join(' ')
+    const classes = []
+    if (this.state.persons.length <= 2) {
+      classes.push('red') // classes = ['red']
+    }
+    if (this.state.persons.length <= 1) {
+      classes.push('bold') // classes = ['red', bold']
     }
 
     return (
       <div className="App">
         <h1>I AM A REACT APP!!</h1>
-        <h3>This is really working!!</h3>
+        <p className={classes.join(' ')}>This is really working!!</p>
         <button 
           onClick={this.togglePersonsHandler}
           style={styles.button}
