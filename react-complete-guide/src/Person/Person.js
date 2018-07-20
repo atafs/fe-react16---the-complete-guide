@@ -1,4 +1,5 @@
 import React from 'react'
+import './Person.css'
 
 // functional component es6
 const person = (props) => {
@@ -12,7 +13,7 @@ const person = (props) => {
 
     // dynamic content
     return (
-        <div>
+        <div className="Person">
             <p onClick={click}>I am {name} and I am {age} years old</p>
             <p>{props.children}</p>
             <input 
