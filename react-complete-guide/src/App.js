@@ -41,11 +41,30 @@ class App extends Component {
   render() {
     console.info(this.state)
 
+    const styles = {
+      button: {
+        backgroundColor: 'white',
+        font: 'inherit',
+        border: '1px solid blue',
+        padding: '8px',
+        cursor: 'pointer'
+      },
+      paragraph: {
+        color: 'blue',
+        cursor: 'pointer'
+      }
+    }
+
     return (
       <div className="App">
         <h1>I AM A REACT APP!!</h1>
         <h3>This is really working!!</h3>
-        <button onClick={() => this.switchNameHandler('AMERICO!!££')}>Switch Name</button>
+        <button 
+          onClick={() => this.switchNameHandler('AMERICO!!££')}
+          style={styles.button}
+          >
+            Switch Name
+          </button>
         <Person 
           name={this.state.persons[0].name} 
           age={this.state.persons[0].age}/>
@@ -55,6 +74,7 @@ class App extends Component {
         <Person 
           name={this.state.persons[2].name} 
           age={this.state.persons[2].age}
+          style={styles.paragraph}
           click={this.switchNameHandler.bind(this, 'AMERICO!!@@')}
           changed={this.nameChangeHandler}
         >

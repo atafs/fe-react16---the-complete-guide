@@ -7,6 +7,7 @@ const person = (props) => {
     const {
         name,
         age,
+        style,
         click,
         changed
     } = props
@@ -14,7 +15,7 @@ const person = (props) => {
     // dynamic content
     return (
         <div className="Person">
-            <p onClick={click}>I am {name} and I am {age} years old</p>
+            <p style={style} onClick={click}>I am {name} and I am {age} years old</p>
             <p>{props.children}</p>
             <input 
                 type="text" 
