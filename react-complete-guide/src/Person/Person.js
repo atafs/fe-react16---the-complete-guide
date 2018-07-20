@@ -5,13 +5,14 @@ const person = (props) => {
     // destructuring
     const {
         name,
-        age
+        age,
+        click
     } = props
 
     // dynamic content
     return (
         <div>
-            <p>I am {name} and I am {age} years old</p>
+            <p onClick={click}>I am {name} and I am {age} years old</p>
             <p>{props.children}</p>
         </div>
     )
