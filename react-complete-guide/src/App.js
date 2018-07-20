@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import './App.css';
+import Radium, { StyleRoot } from 'radium'
 
+import './App.css';
 import Person from './Person/Person'
 
 class App extends Component {
@@ -73,7 +74,11 @@ class App extends Component {
         font: 'inherit',
         border: '1px solid blue',
         padding: '8px',
-        cursor: 'pointer'
+        cursor: 'pointer',
+        ':hover': {
+          backgroundColor: 'lightgreen',
+          color: 'black'
+        }
       },
       paragraph: {
         color: 'blue',
@@ -102,6 +107,10 @@ class App extends Component {
 
       // dynamic style for button
       styles.button.backgroundColor = 'red'
+      styles.button[':hover'] = {
+        backgroundColor: 'lightred',
+        color: 'black'
+      }
     }
 
     // dynamic style from stylesheet
@@ -115,20 +124,22 @@ class App extends Component {
     }
 
     return (
-      <div className="App">
-        <h1>I AM A REACT APP!!</h1>
-        <p className={classes.join(' ')}>This is really working!!</p>
-        <button 
-          onClick={this.togglePersonsHandler}
-          style={styles.button}
-        >
-            Switch Name
-        </button>   
-        {persons} 
-      </div>
+      <StyleRoot>
+        <div className="App">
+          <h1>I AM A REACT APP!!</h1>
+          <p className={classes.join(' ')}>This is really working!!</p>
+          <button 
+            onClick={this.togglePersonsHandler}
+            style={styles.button}
+          >
+              Switch Name
+          </button>   
+          {persons} 
+        </div>
+      </StyleRoot>
     );
     // return React.createElement('div', {className: 'App'}, React.createElement('h1', null, 'I\'M A REACT APP!!'))
   }
 }
 
-export default App;
+export default Radium(App);
