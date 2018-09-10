@@ -1,5 +1,4 @@
 import React from 'react'
-import Radium from 'radium'
 
 import './Person.css'
 
@@ -14,17 +13,10 @@ const person = (props) => {
         changed
     } = props
 
-    // media query with radium
-    const styles = {
-        '@media (min-width: 500px)' : {
-            width: '450px'
-        }
-    }
-
     // dynamic content
     return (
-        <div className="Person" style={styles}>
-            <p style={style} onClick={click}>I am {name} and I am {age} years old</p>
+        <div className="Person">
+            <p onClick={click}>I am {name} and I am {age} years old</p>
             <p>{props.children}</p>
             <input 
                 type="text" 
@@ -35,4 +27,4 @@ const person = (props) => {
     )
 }
 
-export default Radium(person)
+export default person
