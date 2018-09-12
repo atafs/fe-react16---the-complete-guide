@@ -13,6 +13,11 @@ const person = (props) => {
         changed
     } = props
 
+    const rnd = Math.random()
+    if (rnd > 0.7) {
+        throw new Error( 'Something went wrong' )
+    }
+
     // dynamic content
     return (
         <div className={classes.Person}>
