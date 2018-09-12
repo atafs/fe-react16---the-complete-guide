@@ -14,8 +14,4 @@ https://github.com/css-modules/css-modules
 
 https://medium.com/nulogy/how-to-use-css-modules-with-create-react-app-9e44bec2b5c2
 
-# to continue: 75. Using Error Boundaries (React 16+)
-
-
-
-
+# to continue: 82. Understanding the Component Lifecycle
