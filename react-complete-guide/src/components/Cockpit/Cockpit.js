@@ -1,6 +1,7 @@
 import React from 'react'
 
 import classes from './Cockpit.css'
+import Aux from '../../hoc/Aux'
 
 const cockpit = (props) => {
     // dynamic style from stylesheet
@@ -14,13 +15,13 @@ const cockpit = (props) => {
     }
 
     // change button color to red
-    let btnClass = ''
+    let btnClass = classes.Button
     if (props.showPerson) {
-        btnClass = classes.Red
+        btnClass = [classes.Button, classes.Red].joint(' ')
     }
 
     return (
-        <div className={classes.Cockpit}>
+        <Aux>
             <h1>{props.appTitle}</h1>
             <p className={assignClasses.join(' ')}>This is really working!!</p>
             <button 
@@ -29,7 +30,7 @@ const cockpit = (props) => {
             >
                 Switch Name
             </button>  
-        </div>   
+        </Aux>
     )
 }
 
