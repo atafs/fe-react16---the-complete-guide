@@ -5,6 +5,20 @@ import Persons from '../components/Persons/Persons'
 import Cockpit from '../components/Cockpit/Cockpit'
 
 class App extends Component {
+  constructor(props) {
+    super(props)
+    console.log('[APP.js] inside constructor')
+  }
+
+  componentWillMount() {
+    // it is being deprecated this method!!
+    console.log('[APP.js] inside componentWillMount')
+  }
+
+  componentDidMount() {
+    console.log('[APP.js] inside componentDidMount')
+  }
+
   // if state is change, the app is re-rendered
   state = {
     persons: [
@@ -65,6 +79,7 @@ class App extends Component {
   }
 
   render() {
+    console.log('[APP.js] inside render')
     console.info(this.state)
 
     let persons = null
