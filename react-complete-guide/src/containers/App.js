@@ -1,14 +1,23 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 
 import classes from './App.css';
 import Persons from '../components/Persons/Persons'
 import Cockpit from '../components/Cockpit/Cockpit'
 
-class App extends Component {
+class App extends PureComponent {
   constructor(props) {
     super(props)
     console.log('[APP.js] inside constructor')
   }
+
+    // if state is change, the app is re-rendered
+    state = {
+      persons: [
+        { id: 'axs324', name: 'Americo', age:'39' },
+        { id: 'gfv325', name: 'Guida', age:'42' },
+        { id: 'uht653', name: 'Hugo', age:'1' }
+      ]
+    }
 
   componentWillMount() {
     // it is being deprecated this method!!
@@ -19,13 +28,20 @@ class App extends Component {
     console.log('[APP.js] inside componentDidMount')
   }
 
-  // if state is change, the app is re-rendered
-  state = {
-    persons: [
-      { id: 'axs324', name: 'Americo', age:'39' },
-      { id: 'gfv325', name: 'Guida', age:'42' },
-      { id: 'uht653', name: 'Hugo', age:'1' }
-    ]
+  // shouldComponentUpdate(nextProps, nextState) {
+  //   console.log('[UPDATE APP.js] inside shouldComponentUpdate', nextProps, nextState)
+
+  //   return nextState.persons !== this.state.persons ||
+  //   nextState.showPersons !== this.state.showPersons
+  //   // return true
+  // }
+
+  componentWillUpdate(nextProps, nextState) {
+      console.log('[UPDATE APP.js] inside componentWillUpdate', nextProps, nextState)
+  }
+
+  componentDidUpdate() {
+      console.log('[UPDATE APP.js] inside componentDidUpdate')
   }
 
   switchNameHandler = (newName) => {
@@ -96,6 +112,11 @@ class App extends Component {
     
     return (
       <div className={classes.App}>
+        <button
+          onClick={() => {this.setState({showPersons: true})}}
+        >
+          Show Persons
+        </button>
         <Cockpit 
           appTitle={this.props.title}
           showPersons={this.state.showPersons} 

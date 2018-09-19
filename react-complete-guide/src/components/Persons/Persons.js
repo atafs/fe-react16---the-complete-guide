@@ -30,11 +30,15 @@ class Persons extends Component {
         console.log('[UPDATE Persons.js] inside shouldComponentUpdate', nextProps, nextState)
         // - if it return true, the update continues...
         // - if we return false, the update stops!!
-        // ... can be usefull for components that receive a lot of props 
+        // ... can be useful for components that receive a lot of props 
         // but we only what to re-render only when of them changes!!
+        // improving greatly the performance of the App!!
         
         // shallow comparison of these objects (that is why this is true)
-        return nextProps.persons !== this.props.persons
+        return nextProps.persons !== this.props.persons ||
+        nextProps.changed !== this.props.changed ||
+        nextProps.clicked !== this.props.clicked
+        // return true
     }
 
     componentWillUpdate(nextProps, nextState) {
