@@ -1,7 +1,6 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 
 import classes from './Cockpit.css'
-import Aux from '../../hoc/Aux'
 
 const cockpit = (props) => {
     // dynamic style from stylesheet
@@ -21,7 +20,7 @@ const cockpit = (props) => {
     }
 
     return (
-        <Aux>
+        <Fragment>
             <h1>{props.appTitle}</h1>
             <p className={assignClasses.join(' ')}>This is really working!!</p>
             <button 
@@ -30,7 +29,7 @@ const cockpit = (props) => {
             >
                 Switch Name
             </button>  
-        </Aux>
+        </Fragment>
     )
 }
 
