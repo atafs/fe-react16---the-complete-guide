@@ -3,7 +3,8 @@ import React, { PureComponent } from 'react';
 import classes from './App.css';
 import Persons from '../components/Persons/Persons'
 import Cockpit from '../components/Cockpit/Cockpit'
-
+import Aux from '../hoc/Aux'
+import widthClassStateless from '../hoc/widthClassStateless'
 class App extends PureComponent {
   constructor(props) {
     super(props)
@@ -111,7 +112,7 @@ class App extends PureComponent {
     }
     
     return (
-      <div className={classes.App}>
+      <Aux>
         <button
           onClick={() => {this.setState({showPersons: true})}}
         >
@@ -124,10 +125,10 @@ class App extends PureComponent {
           clicked={this.togglePersonsHandler}
         />
         {persons} 
-      </div>
+      </Aux>
     );
     // return React.createElement('div', {className: 'App'}, React.createElement('h1', null, 'I\'M A REACT APP!!'))
   }
 }
 
-export default App;
+export default widthClassStateless(App, classes.App)

@@ -14,4 +14,4 @@ https://github.com/css-modules/css-modules
 
 https://medium.com/nulogy/how-to-use-css-modules-with-create-react-app-9e44bec2b5c2
 
-# to continue: 93. Returning Adjacent Elements (React 16+)
+# to continue: 95. Understanding Higher Order Components (HOCs)

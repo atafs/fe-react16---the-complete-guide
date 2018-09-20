@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 
 import classes from './Person.css'
+import Aux from '../../../hoc/Aux'
+import widthClassStateful from '../../../hoc/widthClassStateful'
 
 // functional component es6
 class Person extends Component {
@@ -37,7 +39,7 @@ class Person extends Component {
         
         // dynamic content
         return (
-            <div className={classes.Person}>
+            <Aux>
                 <p onClick={click}>I am {name} and I am {age} years old</p>
                 <p>{children}</p>
                 <input 
@@ -45,9 +47,9 @@ class Person extends Component {
                     onChange={changed} 
                     value={name}
                 />
-            </div>
+            </Aux>
         )
     }
 }
 
-export default Person
+export default widthClassStateful(Person, classes.Person)
