@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 
 import classes from './Person.css'
 import Aux from '../../../hoc/Aux'
@@ -50,6 +51,13 @@ class Person extends Component {
             </Aux>
         )
     }
+}
+
+Person.propTypes = {
+    click: PropTypes.func,
+    name: Proptypes.string,
+    age: PropTypes.number,
+    changed: PropTypes.func
 }
 
 export default widthClassStateful(Person, classes.Person)
