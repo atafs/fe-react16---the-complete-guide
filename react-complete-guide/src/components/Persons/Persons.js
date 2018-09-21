@@ -6,6 +6,7 @@ class Persons extends Component {
     constructor(props) {
         super(props)
         console.log('[Persons.js] inside constructor')
+        this.lastPersonRef = React.createRef()
     }
 
     /* LIFECYCLE */
@@ -56,6 +57,7 @@ class Persons extends Component {
             return <Person 
                 key={person.id}
                 position={index}
+                ref={this.lastPersonRef}
                 name={person.name} 
                 age={person.age}
                 click={() => this.props.clicked( index )}
