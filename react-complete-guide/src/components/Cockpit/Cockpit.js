@@ -29,6 +29,7 @@ const cockpit = (props) => {
             >
                 Switch Name
             </button>  
+            <button onClick={props.login}>Log in</button>
         </Fragment>
     )
 }

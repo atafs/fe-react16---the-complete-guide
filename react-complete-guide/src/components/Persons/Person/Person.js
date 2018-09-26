@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import classes from './Person.css'
 import Aux from '../../../hoc/Aux'
 import widthClassStateful from '../../../hoc/widthClassStateful'
+import { AuthContext } from '../../../containers/App'
 
 // functional component es6
 class Person extends Component {
@@ -38,12 +39,17 @@ class Person extends Component {
             age,
             click,
             changed,
+            authenticated,
             children
         } = this.props
         
         // dynamic content
         return (
             <Aux>
+                <AuthContext.Consumer>
+                    {auth => auth ? <p>I am authenticated with AuthContext</p> : null }
+                </AuthContext.Consumer>
+                { authenticated ? <p>I am authenticated</p> : null }
                 <p onClick={click}>I am {name} and I am {age} years old</p>
                 <p>{children}</p>
                 <input 

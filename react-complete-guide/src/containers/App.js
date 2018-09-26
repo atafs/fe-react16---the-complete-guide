@@ -5,6 +5,8 @@ import Persons from '../components/Persons/Persons'
 import Cockpit from '../components/Cockpit/Cockpit'
 import Aux from '../hoc/Aux'
 import widthClassStateless from '../hoc/widthClassStateless'
+
+export const AuthContext = React.createContext(false)
 class App extends PureComponent {
   constructor(props) {
     super(props)
@@ -18,7 +20,8 @@ class App extends PureComponent {
         { id: 'gfv325', name: 'Guida', age:'42' },
         { id: 'uht653', name: 'Hugo', age:'1' }
       ],
-      toggleClicked: 0
+      toggleClicked: 0,
+      authenticated: false
     }
 
   componentWillMount() {
@@ -104,6 +107,10 @@ class App extends PureComponent {
     })
   }
 
+  loginHandler = () => {
+    this.setState({ authenticated: true })
+  }
+
   render() {
     console.log('[APP.js] inside render')
     console.info(this.state)
@@ -116,6 +123,7 @@ class App extends PureComponent {
           persons={this.state.persons}
           clicked={this.deletePersonHandler}
           changed={this.nameChangedHandler}
+          isAuthenticated={this.state.authenticated}
         />
       )
     }
@@ -130,10 +138,13 @@ class App extends PureComponent {
         <Cockpit 
           appTitle={this.props.title}
           showPersons={this.state.showPersons} 
-          persons={this.state.persons} 
+          persons={this.state.persons}
+          login={this.loginHandler}
           clicked={this.togglePersonsHandler}
         />
-        {persons} 
+        <AuthContext.Provider value={this.state.authenticated}>
+          {persons}
+        </AuthContext.Provider>
       </Aux>
     );
     // return React.createElement('div', {className: 'App'}, React.createElement('h1', null, 'I\'M A REACT APP!!'))

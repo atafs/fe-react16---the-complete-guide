@@ -38,7 +38,8 @@ class Persons extends Component {
         // shallow comparison of these objects (that is why this is true)
         return nextProps.persons !== this.props.persons ||
         nextProps.changed !== this.props.changed ||
-        nextProps.clicked !== this.props.clicked
+        nextProps.clicked !== this.props.clicked ||
+        nextProps.isAuthenticated !== this.props.isAuthenticated
         // return true
     }
 
@@ -60,6 +61,7 @@ class Persons extends Component {
                 ref={this.lastPersonRef}
                 name={person.name} 
                 age={person.age}
+                authenticated={this.props.isAuthenticated}
                 click={() => this.props.clicked( index )}
                 changed={( event ) => this.props.changed( event, person.id )}
             />
