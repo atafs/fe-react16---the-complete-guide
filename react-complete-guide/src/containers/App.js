@@ -16,18 +16,13 @@ class App extends PureComponent {
     // if state is change, the app is re-rendered
     state = {
       persons: [
-        { id: 'axs324', name: 'Americo', age:'39' },
-        { id: 'gfv325', name: 'Guida', age:'42' },
-        { id: 'uht653', name: 'Hugo', age:'1' }
+        { id: 'axs324', name: 'Americo', age:39 },
+        { id: 'gfv325', name: 'Guida', age:42 },
+        { id: 'uht653', name: 'Hugo', age:1 }
       ],
       toggleClicked: 0,
       authenticated: false
     }
-
-  componentWillMount() {
-    // it is being deprecated this method!!
-    console.log('[APP.js] inside componentWillMount')
-  }
 
   componentDidMount() {
     console.log('[APP.js] inside componentDidMount')
@@ -41,8 +36,14 @@ class App extends PureComponent {
   //   // return true
   // }
 
-  componentWillUpdate(nextProps, nextState) {
-      console.log('[UPDATE APP.js] inside componentWillUpdate', nextProps, nextState)
+  static getDerivedStateFromProps(nextState, prevState) {
+    console.log('[UPDATE APP.js] inside getDerivedStateFromProps', nextState, prevState)
+    return prevState
+  }
+
+  getSnapshotBeforeUpdate() {
+    console.log('[UPDATE APP.js] inside getSnapshotBeforeUpdate')
+    return null
   }
 
   componentDidUpdate() {
