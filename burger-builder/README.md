@@ -1,4 +1,4 @@
-continue... 117. Outputting Burger Ingredients Dynamically
+continue... 131. Adding a Toolbar
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
