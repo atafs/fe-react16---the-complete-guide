@@ -1,4 +1,4 @@
-continue... 131. Adding a Toolbar
+continue... 143. Improving Performance
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
